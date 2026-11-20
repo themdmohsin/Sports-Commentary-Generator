@@ -17,7 +17,7 @@ class SportsTests(unittest.TestCase):
         w = np.zeros((4, 4), dtype="f")
         model = LoRA(w, rank=4)
         before = model.logits(x)
-        model.optimize(x, np.arange(4))
+        model.optimize(x, np.arange(4), epochs=1000)
         np.testing.assert_array_equal(w, 0)
         self.assertTrue(np.all(np.diag(model.logits(x)) > np.diag(before)))
         np.testing.assert_array_equal(model.logits(x).argmax(1), np.arange(4))

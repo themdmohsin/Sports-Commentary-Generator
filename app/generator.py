@@ -11,11 +11,13 @@ class Generator:
         self.base = GPT2()
         with np.load(ARTIFACT) as saved:
             self.vocab = saved["vocab"]
-            self.a, self.b, self.scale = saved["a"], saved["b"], saved["scale"]
+            a, b, scale = saved["a"], saved["b"], saved["scale"]
         self.weight = self.base.w["wte.weight"][self.vocab].T.copy()
 
+        self.merged = self.weight + float(scale) * (a @ b)
+
     def logits(self, x):
-        return x @ self.weight + self.scale * ((x @ self.a) @ self.b)
+        return x @ self.merged
 
     def generate(self, event):
         event = event.strip()
