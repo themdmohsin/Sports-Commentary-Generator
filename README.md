@@ -1,3 +1,4 @@
+[![Built with askThili](https://msrit.ask.thili.ai/api/v1/public/projects/u99pmfr2sc/badge.svg)](https://msrit.ask.thili.ai/b/u99pmfr2sc)
 # Sports Commentary Generator
 
 Type a simulated match event into Streamlit to generate a short call. For example, **Tara hits a three-pointer to level it at 81-81.** produces a basketball call with Tara's name and the supplied score.
